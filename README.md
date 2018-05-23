@@ -36,17 +36,24 @@ ReactDOM.render(
 Create New App
 ```js
 src/
-    <base_app_name>/
+    <basic_app_name>/
         components/
         containers/
+        routes/
     <advanced_app_name>/
         actions/
             customAction.js
             index.js
         components/
         containers/
+        models/
+            index.js
         reducers/
             index.js
+            <model>.js
         routes/
             index.js
+        urls/
+            index.js
+        app.js
 ```
