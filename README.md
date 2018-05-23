@@ -61,7 +61,7 @@ src/
 ## Create New App
 ```js
 src/
-  project/
+  apps/
     <advanced_app_name>/
       actions/
         customAction.js
