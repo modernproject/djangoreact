@@ -1,0 +1,1 @@
+A standard set of settings, components, containers, and utilities to handle Django REST Framework through React + Redux.
