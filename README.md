@@ -95,7 +95,7 @@ src/
 Routes must now consist of index.js which relies on key, values paris 
 
 #### Explcitly Defined Route
-```
+```js
 export default const routes = {
   'user': {
     path: '/user/:pk',
@@ -107,7 +107,7 @@ export default const routes = {
 ```
 
 #### DRF-based Router Creation
-```
+```js
 import { DefaultRouter } from 'djangoreact/router'
 import { User } from 'src/apps/User/models'
 
