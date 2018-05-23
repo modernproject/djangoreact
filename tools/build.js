@@ -11,7 +11,7 @@ const exec = (command, extraEnv) =>
 
 console.log('Building CommonJS ...')
 
-exec('babel src -d . --ignore __tests__', {
+exec('babel src -d build --ignore __tests__', {
   BABEL_ENV: 'cjs'
 })
 
@@ -23,20 +23,20 @@ exec('babel src -d es --ignore __tests__', {
 
 console.log('\nBuilding jackal.js ...')
 
-exec('rollup -c -f umd -o umd/jackal.js', {
+exec('rollup -c -f umd -o umd/index.js', {
   BABEL_ENV: 'umd',
   NODE_ENV: 'development'
 })
 
 console.log('\nBuilding jackal.min.js ...')
 
-exec('rollup -c -f umd -o umd/jackal.min.js', {
+exec('rollup -c -f umd -o umd/index.min.js', {
   BABEL_ENV: 'umd',
   NODE_ENV: 'production'
 })
 
 const size = gzipSize.sync(
-  fs.readFileSync('umd/jackal.min.js')
+  fs.readFileSync('umd/index.min.js')
 )
 
 console.log('\ngzipped, the UMD build is %s', prettyBytes(size))
