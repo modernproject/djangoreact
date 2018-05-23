@@ -2,7 +2,11 @@
   "name": "jackal",
   "version": "0.0.1",
   "description": "",
-  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modernproject/jackal.git"
+  },
+  "main": "./src/index.js",
   "module": "es/index.js",
   "scripts": {
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
@@ -15,10 +19,6 @@
     "prepare": "npm run clean && npm run build",
     "test": "jest",
     "coverage": "codecov"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/modernproject/jackal.git"
   },
   "files": [
     "dist",
@@ -37,7 +37,6 @@
     "redux": "^2.0.0 || ^3.0.0 || ^4.0.0-0"
   },
   "dependencies": {
-    "npm": "^6.0.1",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
