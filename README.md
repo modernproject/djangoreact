@@ -138,7 +138,9 @@ export default const routes = {
 */
 ```
 
-## Reducer Structure
+## Reducer
+
+### Structure per Model
 ```js
 <model>: {
   current: {},
@@ -148,4 +150,18 @@ export default const routes = {
   options: {'GET': {}, ...},
   pagination: {current: 1, next: 2, prev: 1},
 }
+```
+
+### Generating Reducer
+In `src/apps/<app_name>/reducers/<model>.js`
+```js
+import { ModelReducer } from 'djangoreact/reducer'
+import { User } from 'src/apps/<app_name>/models'
+
+export default const reducer = ModelReducer(User)
+```
+
+In `src/apps/<app_name>/reducers/index.js`
+```js
+export { default as <model> } from './<model>';
 ```
