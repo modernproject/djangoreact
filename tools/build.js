@@ -21,14 +21,14 @@ exec('babel src -d es --ignore __tests__', {
   BABEL_ENV: 'es'
 })
 
-console.log('\nBuilding jackal.js ...')
+console.log('\nBuilding index.js ...')
 
 exec('rollup -c -f umd -o umd/index.js', {
   BABEL_ENV: 'umd',
   NODE_ENV: 'development'
 })
 
-console.log('\nBuilding jackal.min.js ...')
+console.log('\nBuilding index.min.js ...')
 
 exec('rollup -c -f umd -o umd/index.min.js', {
   BABEL_ENV: 'umd',
