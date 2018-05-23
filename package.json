@@ -7,12 +7,9 @@
   "scripts": {
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:umd":
-      "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c -o dist/jackal.js",
-    "build:umd:min":
-      "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c -o dist/jackal.min.js",
-    "build":
-      "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c -o dist/jackal.js",
+    "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c -o dist/jackal.min.js",
+    "build": "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
     "clean": "rimraf lib dist es coverage",
     "lint": "eslint src test",
     "prepare": "npm run clean && npm run build",
@@ -23,7 +20,12 @@
     "type": "git",
     "url": "https://github.com/modernproject/jackal.git"
   },
-  "files": ["dist", "lib", "src", "es"],
+  "files": [
+    "dist",
+    "lib",
+    "src",
+    "es"
+  ],
   "author": "Dylan Stein <djstein@ncsu.edu> (http://github.com/djstein)",
   "license": "MIT",
   "bugs": {
@@ -35,6 +37,7 @@
     "redux": "^2.0.0 || ^3.0.0 || ^4.0.0-0"
   },
   "dependencies": {
+    "npm": "^6.0.1",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
@@ -86,7 +89,9 @@
     "rollup-plugin-uglify": "^3.0.0"
   },
   "browserify": {
-    "transform": ["loose-envify"]
+    "transform": [
+      "loose-envify"
+    ]
   },
   "jest": {
     "coverageDirectory": "./coverage/",
