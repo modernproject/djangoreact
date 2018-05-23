@@ -10,11 +10,15 @@ reverse('<route_name>', {pk: 1})
 ```
 
 ## Settings
-```js
-src/index.js
+We create a settings object that is added to the context and passed to all children!
 
-export default const settings = {
-  DEBUG: !!process.env.NODE_ENV === 'production',
+In `src/config/settings/base.js`
+```js
+import { BaseSettings } from 'djangoreact/settings`;
+
+const Settings = Object.create(BaseSettings)
+Object.assign(Settings, {
+  DEBUG: !!process.env.NODE_ENV === 'production', // default
   installedApps: [
     '<app_name>'
   ],
@@ -22,9 +26,15 @@ export default const settings = {
     historyMiddleware
   ],
   BASE_API_URL: 'api',
-  ROOT_ROUTER: 'config.routers',
-  ROOT_REDUCER: 'config.reducers',
-}
+  ROOT_ROUTER: 'config.routers', // default
+  ROOT_REDUCER: 'config.reducers', // default
+})
+```
+
+
+Inside `src/config/index.js`
+```js
+import { settings } from 'src/config/settings'
 
 require('es6-promise').polyfill()
 
@@ -58,7 +68,8 @@ src/
   apps/
 ```
 
-## Create New App
+## App Structure
+### Overview
 ```js
 src/
   apps/
@@ -78,6 +89,53 @@ src/
       urls/
           index.js
       app.js
+```
+
+### Routes Structure
+Routes must now consist of index.js which relies on key, values paris 
+
+#### Explcitly Defined Route
+```
+export default const routes = {
+  'user': {
+    path: '/user/:pk',
+    exact: true,
+    Component: BaseComponent,
+    Layout: NavBarSideBarLayout
+  }
+}
+```
+
+#### DRF-based Router Creation
+```
+import { DefaultRouter } from 'djangoreact/router'
+import { User } from 'src/apps/User/models'
+
+const router = DefaultRouter()
+router.register('user', User)
+
+export default const routes = {
+  ...router,
+}
+
+/* router creates a dictionary of routes,
+  Router pattern: ^users/$ Name: 'user-list'
+  Router pattern: ^users/{pk}/$ Name: 'user-detail'
+{
+  'user-list': {
+    path: '/users/',
+    exact: true,
+    Component: this.context.settings.DEFAULT_LIST_CONTAINER,
+    Layout: this.context.settings.DEFAULT_LAYOUT
+  },
+  'user-detail': {
+    path: '/users/:pk',
+    exact: true,
+    Component: this.context.settings.DEFAULT_DETAIL_CONTAINER,
+    Layout: this.context.settings.DEFAULT_LAYOUT
+  }
+}
+*/
 ```
 
 ## Reducer Structure
