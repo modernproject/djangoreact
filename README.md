@@ -1,20 +1,29 @@
 A standard set of settings, components, containers, and utilities to handle Django REST Framework through React + Redux.
 
-Settings
+## Utility Functions
+### reverse
+```js
+import { reverse } from 'djangoreact/utils/url'
+
+reverse('<route_name>')
+reverse('<route_name>', {pk: 1})
+```
+
+## Settings
 ```js
 src/index.js
 
 export default const settings = {
   DEBUG: !!process.env.NODE_ENV === 'production',
   installedApps: [
-    'Hello'
+    '<app_name>'
   ],
-  reduxMiddleware: [
+  middleware: [
     historyMiddleware
   ],
-  baseAPIUri: 'api',
-  rootRouter: 'config.router',
-  rootReducer: 'config.reducer',
+  BASE_API_URL: 'api',
+  ROOT_ROUTER: 'config.routers',
+  ROOT_REDUCER: 'config.reducers',
 }
 
 require('es6-promise').polyfill()
@@ -33,27 +42,52 @@ ReactDOM.render(
 )
 ```
 
-Create New App
+## Config Structure
 ```js
 src/
-    <basic_app_name>/
-        components/
-        containers/
-        routes/
+  config/
+    settings/
+      base.js
+      dev.js
+      prod.js
+      test.js
+    routers.js
+    reducers.js
+    index.js
+    index.html
+  apps/
+```
+
+## Create New App
+```js
+src/
+  project/
     <advanced_app_name>/
-        actions/
-            customAction.js
-            index.js
-        components/
-        containers/
-        models/
-            index.js
-        reducers/
-            index.js
-            <model>.js
-        routes/
-            index.js
-        urls/
-            index.js
-        app.js
+      actions/
+        customAction.js
+        index.js
+      components/
+      containers/
+      models/
+          index.js
+      reducers/
+          index.js
+          <model>.js
+      routes/
+          index.js
+      urls/
+          index.js
+      app.js
+```
+
+## Reducer Structure
+```js
+<model>: {
+  current: {},
+  errors: {},
+  list: { 1: {...}, 2: {...} },
+  listIds: [1,2],
+  options: {'GET': {}, ...},
+  pagination: {current: 1, next: 2, prev: 1},
+}
 ```
