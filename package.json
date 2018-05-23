@@ -1,10 +1,10 @@
 {
-  "name": "jackal",
+  "name": "djangoreact",
   "version": "0.0.1",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/modernproject/jackal.git"
+    "url": "https://github.com/modernproject/djangoreact.git"
   },
   "main": "./src/index.js",
   "module": "es/index.js",
@@ -25,9 +25,9 @@
   "author": "Dylan Stein <djstein@ncsu.edu> (http://github.com/djstein)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/modernproject/jackal/issues"
+    "url": "https://github.com/modernproject/djangoreact/issues"
   },
-  "homepage": "https://github.com/modernproject/jackal",
+  "homepage": "https://github.com/modernproject/djangoreact",
   "peerDependencies": {
     "react": ">=16",
     "redux": ">=4"

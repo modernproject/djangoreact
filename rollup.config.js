@@ -11,7 +11,7 @@ const config = {
   external: ['react', 'redux'],
   output: {
     format: 'umd',
-    name: 'Jackal',
+    name: 'djangoreact',
     globals: {
       react: 'React',
       redux: 'Redux'
