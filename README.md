@@ -14,7 +14,7 @@ We create a settings object that is added to the context and passed to all child
 
 In `src/config/settings/base.js`
 ```js
-import { BaseSettings } from 'djangoreact/settings`;
+import { BaseSettings } from 'djangoreact/settings';
 
 const Settings = Object.create(BaseSettings)
 Object.assign(Settings, {
