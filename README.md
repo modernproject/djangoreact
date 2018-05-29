@@ -1,5 +1,24 @@
 A standard set of settings, components, containers, and utilities to handle Django REST Framework through React + Redux.
 
+How it works:
+- yarn start and begin webpack dev server or yarn build and build the bundle
+- call `const djangoReact = DjangoReact()` in index.js / App.js
+- DjangoReact will build urls, routes, reducers, middleware, based on mapping a settings file to the current Node environment. If Process == `prod` will use settings file `src/config/settings/prod`
+- `djangoReact` checks settings are available and configured correctly
+- `import DjangoReact from 'djangoreact'` in config/index.js / App.
+
+Inside the DjangoReact component:
+```
+<Provider store={store}>
+    <ConnectedRouter history={history} basename={basename}>
+      <ThemeProvider theme={Theme}>
+        <Switch>{renderRoutes(routes)}</Switch>
+      </ThemeProvider>
+    </ConnectedRouter>
+</Provider>
+```
+
+
 ## Utility Functions
 ### reverse
 ```js
